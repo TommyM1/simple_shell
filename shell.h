@@ -21,6 +21,10 @@
 
 #define ARG_SIZE 200
 
+/**
+ * struct info - A struct type tracting the status of function
+ * @status: variable to hold status code
+ */
 typedef struct info
 {
 	int status;
@@ -102,8 +106,8 @@ int get_status_code(int status);
 void int_to_string(int value, char *str, int size);
 
 
-
-int execute_command(char *args[], int check, int *last_status, char *argv, char *envp[]);
+int execute_command(char *args[], int check, int *last_status,
+		char *argv, char *envp[]);
 
 int handle_cd(char *mycmd, char *args[], int check,
 		int *last_status, char *argv, char *envp[]);
@@ -116,27 +120,6 @@ int handle_unsetenv(char *mycmd, char *args[], int check, int *last_status);
 
 void replace_status_variable(char *args[], int count, int *last_status);
 
-
-typedef struct Alias
-{
-	char *name;
-	char *value;
-	struct Alias *next;
-} Alias;
-
-
-char *read_line(void);
-void list_aliases(void);
-char *expand_alias(const char *command);
-void add_alias(const char *name, const char *value);
-Alias *find_alias(const char *name);
-int process_input(char *input);
-void handle_alias_input(const char *input);
-void handle_non_alias_input(const char *input);
-void cleanup(void);
-
-int alias_handle(char *mycmd, char *args[], int check,
-int *last_status);
 
 int split_logical_operator(char *input, const char *delimiter,
 char *output[]);
