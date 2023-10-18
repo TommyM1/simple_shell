@@ -21,7 +21,7 @@ int main(int argc, char *argv[], char *envp[])
 	else
 	{
 		signal(SIGINT, signal_handler);
-		while (1)
+		while (LOOP)
 		{
 			prompt("$ ", s_strlen("$ "));
 			input_byte = take_input(user_command);
